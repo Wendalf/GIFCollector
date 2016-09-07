@@ -5,25 +5,24 @@ class GifsController < ApplicationController
    end
 
    post '/gifs/new' do
-     @gif_file_name = params[:gif][:filename]
+     gif_file_name = params[:gif][:filename]
      gif_file = params[:gif][:tempfile]
-
-     File.open("public/#{@gif_file_name}", "wb") do |f|
+     # binding.pry
+     File.open("./public/gifs/#{gif_file_name}", 'w') do |f|
        f.write(gif_file.read)
      end
 
-    #  gif = Gif.find_or_create_by(params[:gif])
-    #  redirect "gifs/#{gif.id}"
+     # File.write(File.expand_path("public/#{gif_file_name}"), File.open(gif_file))
 
-      erb :show
+      gif = Gif.create(filename: params[:gif][:filename])
 
+      redirect "gifs/#{gif.id}"
    end
 
-  get 'gifs/:id' do
+  get '/gifs/:id' do
+    @gif = Gif.find(params[:id])
     erb :'gifs/show'
   end
-
-  get '/show'
 
 
 end
