@@ -21,15 +21,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    redirect '/index' if logged_in?
-    redirect '/login'
-  end
-
-  get '/index' do
-    redirect '/login' unless logged_in?
-    @gifs = Gif.all
-    @user = current_user
     erb :index
   end
+
+
 
 end
