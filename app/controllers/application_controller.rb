@@ -12,23 +12,15 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def logged_in?
-      !!session[:id]
+      !!session[:user_id]
     end
 
     def current_user
-      User.find(session[:id])
+      User.find(session[:user_id])
     end
   end
 
   get '/' do
-    redirect '/index' if logged_in?
-    redirect '/login'
-  end
-
-  get '/index' do
-    redirect '/login' unless logged_in?
-    @gifs = Gif.all
-    @user = current_user
     erb :index
   end
 
