@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
   get '/' do
   #  binding.pry
     @gifs = Gif.all
-      @user = User.find_by_id(session[:user_id])
+    @user = User.find_by_id(session[:user_id])
     erb :index
   end
 
