@@ -21,6 +21,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    @gifs = Gif.all
     erb :index
   end
 

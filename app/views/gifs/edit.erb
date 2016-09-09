@@ -1,4 +1,7 @@
-<img src="<%= @gif.filename %>">
+<a href="/">Home</a> | <a href="/users/<%=  @user.id %>">My Gifs</a> |<a href="/signout">Sign Out</a>
+<br>
+<img src="../users/<%=  @user.id %>/<%= @gif.filename %>">
+<!-- NEED to add tags too -->
 <form action="/gifs/<%= @gif.slug %>/edit" method="post">
 	<input type="text" id="description" name="description" value="<%= @gif.description %>">
 	<input type="submit" value="Update Description">

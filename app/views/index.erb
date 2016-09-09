@@ -1,1 +1,6 @@
-<a href="/login">Login</a> | <a href="/signup">Sign up</a>
+<a href="/">Home</a> | <a href="/login">Login</a> | <a href="/signup">Sign up</a>
+<br>
+<% @gifs.each do |gif|%>
+<a href="/gifs/<%= gif.slug %>"><img src="users/<%= gif.user_id %>/<%= gif.filename %>" alt="<%= gif.slug %>"></a>
+<!-- NEED to add tags too -->
+<% end %>
