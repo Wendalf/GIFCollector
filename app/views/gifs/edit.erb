@@ -1,4 +1,4 @@
-<a href="/">Home</a> | <a href="/users/<%=  @user.id %>">My Gifs</a> |<a href="/signout">Sign Out</a>
+<a href="/">Home</a> | <a href="/users/<%=  @user.id %>">My Gifs</a> | <a href="/signout">Sign Out</a>
 <br>
 <img src="../users/<%=  @user.id %>/<%= @gif.filename %>">
 <!-- NEED to add tags too -->
@@ -6,7 +6,7 @@
 	<input type="text" id="description" name="description" value="<%= @gif.description %>">
 	<input type="submit" value="Update Description">
 </form>
-<form action="/gifs/<%= @gif.slug %>/delete">
+<form action="/gifs/<%= @gif.slug %>/delete" method="post">
 	<input type="hidden" id="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete Gif">
 </form>

@@ -14,7 +14,7 @@ class GifsController < ApplicationController
       session[:user_id] = user.id
       user.makedir
       redirect '/'
-      #NEED to seccessful created user message
+      #NEED to add seccessful created user message
     else
       #NEED to add error message
       redirect '/signup'
@@ -34,6 +34,8 @@ class GifsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
+      #OR redirect to home page.(we need to decided later)
+      #NEED to add seccessful logged in message
     else
       #NEED to add login error message
       redirect '/login'

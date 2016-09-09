@@ -36,10 +36,8 @@ class GifsController < ApplicationController
     if logged_in? && @gif.user_id == session[:user_id]
       @user = User.find(session[:user_id])
       erb :'gifs/edit'
-    elsif logged_in?
-      erb :'gifs/show'
     else
-      redirect '/login'
+      erb :'gifs/show'
     end
 
   end
