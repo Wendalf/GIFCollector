@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :gifs
 	has_secure_password
+	after_save :makedir
 
 	def slug
 		self.username.strip.gsub(' ', '-').gsub(/[^\w-]/, '')

@@ -12,7 +12,7 @@ class GifsController < ApplicationController
     user = User.new(params)
     if user.save && (user.username != '') && (user.email != '')
       session[:user_id] = user.id
-      user.makedir
+      # user.makedir
       redirect '/'
       #NEED to add seccessful created user message
     else
@@ -47,7 +47,7 @@ class GifsController < ApplicationController
     @user = User.find(params[:id])
 
     if logged_in? && @user == current_user
-      @gifs = @user.gifs
+      @gifs = @user.gifs.reverse
       erb :'/users/show'
     else
       redirect '/login'

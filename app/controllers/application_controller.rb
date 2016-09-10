@@ -16,13 +16,17 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      User.find(session[:user_id])
+      @user ||= User.find(session[:user_id])
+      # if @user
+      #   @user
+      # else
+      #   User.find(session[:user_id])
+      # end
     end
   end
 
   get '/' do
-  #  binding.pry
-    @gifs = Gif.all
+    @gifs = Gif.all_descending
     @user = User.find_by_id(session[:user_id])
     erb :index
   end

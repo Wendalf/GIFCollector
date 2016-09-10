@@ -32,14 +32,12 @@ class GifsController < ApplicationController
 
   get '/gifs/:slug' do
     @gif = Gif.find_by_slug(params[:slug])
-
-    if logged_in? && @gif.user_id == session[:user_id]
+    if @gif.user_id == session[:user_id]
       @user = User.find(session[:user_id])
       erb :'gifs/edit'
     else
       erb :'gifs/show'
     end
-
   end
 
   post '/gifs/:slug/edit' do
