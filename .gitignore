@@ -1,5 +1,5 @@
 *.db
-*.sqlite
-/public/users
-/db
-/Gemfile.lock
+db/*.sqlite
+public/users/
+db/
+Gemfile.lock
