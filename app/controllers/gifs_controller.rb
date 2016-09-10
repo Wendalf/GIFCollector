@@ -10,6 +10,10 @@ class GifsController < ApplicationController
   #   end
   # end
 
+  get '/gifs/new' do
+    erb :'/gifs/new'
+  end
+
   post '/gifs/new' do
     user = User.find(session[:user_id])
     if !params[:gif].empty?
