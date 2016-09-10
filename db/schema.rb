@@ -10,6 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160907152753) do
+
+  create_table "gif_tags", force: :cascade do |t|
+    t.integer "gif_id"
+    t.integer "tag_id"
+  end
+
+  create_table "gifs", force: :cascade do |t|
+    t.string  "filename"
+    t.string  "description"
+    t.integer "user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+  end
 
 end
