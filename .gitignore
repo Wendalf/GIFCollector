@@ -1,5 +1,3 @@
-*.db
-db/*.sqlite
-public/users/
-db/
+public/users/*
+db/*
 Gemfile.lock
