@@ -1,11 +1,10 @@
 <br>
-<img src="../users/<%=  @user.id %>/<%= @gif.filename %>">
-<!-- NEED to add tags too -->
+<img src="../../users/<%=  @gif.user_id %>/<%= @gif.filename %>">
 <form action="/gifs/<%= @gif.slug %>/edit" method="post">
-	<input type="text" id="description" name="description" value="<%= @gif.description %>">
-	<input type="submit" value="Update Description">
-</form>
-<form action="/gifs/<%= @gif.slug %>/delete" method="post">
-	<input type="hidden" id="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete Gif">
+	<input type="text" id="description" name="description" value="<%= @gif.description %>" size="50">
+	<br>
+	<input type="text" name="tags" value="<%= @tags %>" size="50">
+	<br>
+	<br>
+	<input type="submit" value="Update Gif">
 </form>

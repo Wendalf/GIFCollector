@@ -1,0 +1,7 @@
+<br>
+<img src="../users/<%=  @gif.user_id %>/<%= @gif.filename %>">
+<p><%= @gif.description %></p>
+<br>
+<% @gif.tags.each do |tag| %>
+<a href="/tags/<%= tag.slug %>"><%= tag.name %></a>
+<% end %>

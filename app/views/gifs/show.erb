@@ -1,4 +1,13 @@
 <br>
 <img src="../users/<%=  @gif.user_id %>/<%= @gif.filename %>">
-<!-- NEED to add tags too -->
 <p><%= @gif.description %></p>
+<br>
+<% @gif.tags.each do |tag| %>
+<a href="/tags/<%= tag.slug %>"><%= tag.name %></a>
+<% end %>
+<br>
+<a href="/gifs/<%= @gif.slug %>/edit">Edit Gif Info</a>
+<form action="/gifs/<%= @gif.slug %>/delete" method="post">
+	<input type="hidden" id="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete Gif">
+</form>
