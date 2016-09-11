@@ -34,7 +34,6 @@ class GifsController < ApplicationController
 
   get '/gifs/:slug' do
     @gif = Gif.find_by_slug(params[:slug])
-    @tags = @gif.tags.collect{|tag| tag.name}.join(", ")
     if @gif.user_id == session[:user_id]
       erb :'gifs/show'
     else
@@ -44,6 +43,7 @@ class GifsController < ApplicationController
 
   get '/gifs/:slug/edit' do
     @gif = Gif.find_by_slug(params[:slug])
+    @tags = @gif.tags.collect{|tag| tag.name}.join(", ")
     if @gif.user_id == session[:user_id]
       @user = User.find(session[:user_id])
       erb :'gifs/edit'
@@ -60,8 +60,10 @@ class GifsController < ApplicationController
       gif.tags.clear
       tags = params[:tags].gsub(" ", "").split(",")
       tags.each do |tag|
-        new_tag = Tag.find_or_create_by(name: tag)
-        gif.tags << new_tag
+        new_tag = Tag.find_or_create_by(name: tag.downcase)
+        if !gif.tags.include?(new_tag)
+          gif.tags << new_tag
+        end
       end
 
       redirect "gifs/#{gif.slug}"
