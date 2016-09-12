@@ -6,7 +6,7 @@ class GifsController < ApplicationController
 
   post '/gifs/new' do
     user = User.find(session[:user_id])
-    if !params[:gif].empty?
+    if params[:gif]
       gif = Gif.create(filename: params[:gif][:filename], description: params[:description])
       user.gifs << gif
 
@@ -28,7 +28,7 @@ class GifsController < ApplicationController
 
       redirect "gifs/#{gif.slug}"
     else
-      # Or some kind of error page, with a link to the gifs/new
+      flash[:message] = "Please include a gif file!"
       redirect "/gifs/new"
     end
    end

@@ -1,12 +1,34 @@
+<% if flash.has?(:message) %>
 
-<form action="/gifs/new" method="post" enctype="multipart/form-data">
-  <label>Upload GIF:</label>
-  <input type="file" name="gif">
-  <br>
-  <input type="text" name="description" placeholder="Add some description" size="50">
-  <br>
-  <input type="text" name="tags" placeholder="Enter tags separated by commas" size="50">
-  <br>
-  <input type="submit" value="submit">
-</form>
+    <div class="alert alert-dismissible alert-danger animated fadeInDown">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p><%= flash[:message] %></p>
+    </div>
+<% end %>
 
+
+<div class="centeredform">
+  <form class="form-horizontal" action="/gifs/new" method="post" enctype="multipart/form-data">
+    <!-- <input type="file" name="gif"> -->
+
+    <fieldset>
+      <div class="form-group">
+      <label class="file">
+        <input type="file" id="file" aria-label="File browser example" name="gif">
+        <span class="file-custom"></span>
+      </label>
+      </div>
+
+      <div class="form-group">
+          <input type="text" class="form-control" id="inputUsername" placeholder="Add some description" name="description">
+      </div>
+      <div class="form-group">
+          <input type="text" class="form-control" id="inputEmail" placeholder="Enter tags separated by commas" name="tags">
+      </div>
+
+      <div class="form-group">
+          <button type="submit" class="btn fulllengthbutton">Create</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
