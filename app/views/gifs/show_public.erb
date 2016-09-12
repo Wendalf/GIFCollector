@@ -3,5 +3,5 @@
 <p><%= @gif.description %></p>
 <br>
 <% @gif.tags.each do |tag| %>
-<a href="/tags/<%= tag.slug %>"><%= tag.name %></a>
+<a href="/tags/<%= tag.slug %>">#<%= tag.name %></a>
 <% end %>

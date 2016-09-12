@@ -18,10 +18,9 @@
 <% @gifs.each do |gif|%>
     <div>
       <br>
-      <a href="/gifs/<%= gif.slug %>"><img src="users/<%= gif.user_id %>/<%= gif.filename %>" alt="<%= gif.slug %>"></a>
-      <br>
       <% gif.tags.each do |tag| %>
-      <a href="/tags/<%= tag.slug %>"><%= tag.name %></a>
+      <a href="/tags/<%= tag.slug %>">#<%= tag.name %></a>
       <% end %>
+      <a href="/gifs/<%= gif.slug %>"><img src="users/<%= gif.user_id %>/<%= gif.filename %>" alt="<%= gif.slug %>"></a>
     </div>
 <% end %>
