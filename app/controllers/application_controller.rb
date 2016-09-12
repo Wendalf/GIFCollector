@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
     @tag_names = Tag.all.map {|t| t.name}
 
     if @tag_names.include?(params[:input])
-      @tag = Tag.all.select {|tag| tag.name == params[:input]}.first
+      @tag = Tag.all.find{|tag| tag.name == params[:input]}
       @gifs = @tag.gifs
       erb :'/tags/show'
     else
@@ -45,12 +45,5 @@ class ApplicationController < Sinatra::Base
        redirect "/"
     end
   end
-
-  # get '/search' do
-  #
-  #
-  # end
-
-
 
 end
