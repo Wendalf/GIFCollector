@@ -24,6 +24,7 @@ class GifsController < ApplicationController
         new_tag = Tag.find_or_create_by(name: tag)
         gif.tags << new_tag
       end
+      flash[:message] = "Successfully Uploaded GIF!"
 
       redirect "gifs/#{gif.slug}"
     else
@@ -70,7 +71,7 @@ class GifsController < ApplicationController
     end
   end
 
-  delete '/gifs/:slug/delete' do 
+  delete '/gifs/:slug/delete' do
     gif = Gif.find_by_slug(params[:slug])
     if gif.user_id == current_user.id
       gif.destroy

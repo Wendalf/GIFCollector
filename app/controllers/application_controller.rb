@@ -1,6 +1,8 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
+ use Rack::Flash
 
   configure do
 
@@ -30,6 +32,24 @@ class ApplicationController < Sinatra::Base
     @user = User.find_by_id(session[:user_id])
     erb :index
   end
+
+  post '/search' do
+    @tag_names = Tag.all.map {|t| t.name}
+
+    if @tag_names.include?(params[:input])
+      @tag = Tag.all.select {|tag| tag.name == params[:input]}.first
+      @gifs = @tag.gifs
+      erb :'/tags/show'
+    else
+      flash[:message] = "Nothing found!"
+       redirect "/"
+    end
+  end
+
+  # get '/search' do
+  #
+  #
+  # end
 
 
 

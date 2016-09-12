@@ -1,0 +1,92 @@
+
+/*/////Link style////*/
+a:link, a:visited, a:hover, a:active {
+	background-color: none;
+/*	color: #f1cf63;*/
+}
+
+
+/*/////Footer/////*/
+/*div#footer.navbar.navbar-default.navbar-fixed-bottom {
+	min-height: 20px;
+	opacity: 0.6;
+/*	background-color: #eee;*/
+	/*text-align: center;
+    color: #8E561A;
+}*/
+
+/*footer {
+	text-align: center;
+	font-size: 10px;
+	color: #555;
+	padding: 10px 0 20px;
+}
+	footer a {
+		color: #555;
+		text-decoration: underline;
+	}*/
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+    /* float: left; */
+}
+
+div.col-xs-4.well{
+	padding: 15px;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-left: 0px;
+    margin-bottom: 23px;
+    font-size: 19.5px;
+    line-height: inherit;
+    color: #212121;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+input, textarea {
+	display: block;
+	width: 100%;
+	padding: 5px;
+	margin-bottom: 5px;
+	box-shadow: 0 3px 5px #ccc;
+	border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+	margin-top: 5px;
+	width: 100px;
+	background: black;
+	color: white;
+	border-radius: 25px;
+	border: 0;
+}
+
+input[type="submit"]:hover {
+	background: #555;
+}
+
+.nav_bar nav {
+  border-left: 1px solid #ccc;
+}
+
+.nav_bar nav a {
+	display: inline-block;
+	width: 20%;
+	margin: 0;
+	padding: 22px 0;
+	text-transform: uppercase;
+	color: black;
+	text-align: center;
+	border-right: 1px solid #ccc;
+	text-decoration: none;
+	font: 20px "Trebuchet MS", Arial, sans-serif;
+}
+
+.nav_bar nav a.selected {
+	background: black;
+	color: white;
+}

@@ -1,3 +1,16 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3><%= current_user.username %>'s GIFs</h3>
+  </div>
+</div>
+
+<% if flash.has?(:message) %>
+<div class="alert alert-dismissible alert-success animated fadeInDown">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <p><%= flash[:message] %></p>
+</div>
+<% end %>
+
 <br>
 <% @gifs.each do |gif|%>
 <br>

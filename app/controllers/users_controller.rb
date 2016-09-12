@@ -1,4 +1,7 @@
-class GifsController < ApplicationController
+
+class UsersController < ApplicationController
+
+
 
   get '/signup' do
     if logged_in?
@@ -12,6 +15,7 @@ class GifsController < ApplicationController
     user = User.new(params)
     if user.save && (user.username != '') && (user.email != '')
       session[:user_id] = user.id
+      flash[:message] = "Thanks for signing up!"
       # user.makedir
       redirect '/'
       #NEED to add seccessful created user message
@@ -30,9 +34,10 @@ class GifsController < ApplicationController
   end
 
   post '/login' do
-    user = User.find_by(username: params[:username])
+  user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      flash[:message] = "Welcome back #{current_user.username}!"
       redirect "/users/#{user.id}"
       #OR redirect to home page.(we need to decided later)
       #NEED to add seccessful logged in message

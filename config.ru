@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use GifsController
 use TagsController
+use UsersController
 run ApplicationController
