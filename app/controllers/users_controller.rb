@@ -1,8 +1,6 @@
 
 class UsersController < ApplicationController
 
-
-
   get '/signup' do
     if logged_in?
       redirect '/'
@@ -46,13 +44,15 @@ class UsersController < ApplicationController
   get '/users/:id' do
 
     @user = User.find(params[:id])
+    @gifs = @user.gifs.reverse
 
-    if logged_in? && @user == current_user
-      @gifs = @user.gifs.reverse
-      erb :'/users/show'
+    if @user == current_user
+      @username = "My"
     else
-      redirect '/login'
+      @username = @user.username.capitalize + "'s"
     end
+
+    erb :'/users/show'
 
   end
 
@@ -64,7 +64,5 @@ class UsersController < ApplicationController
       redirect '/'
     end
   end
-
-
 
 end
