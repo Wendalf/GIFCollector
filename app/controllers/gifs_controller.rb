@@ -1,7 +1,12 @@
 class GifsController < ApplicationController
 
   get '/gifs/new' do
-    erb :'/gifs/new'
+    if logged_in?
+      erb :'/gifs/new'
+    else
+      redirect '/login'
+    end
+    
   end
 
   post '/gifs/new' do
