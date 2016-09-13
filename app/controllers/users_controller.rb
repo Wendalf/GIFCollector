@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:message] = "Welcome back #{current_user.username}!"
+      flash[:message] = "Welcome back #{current_user.username.capitalize}!"
       redirect "/users/#{user.id}"
       #OR redirect to home page.(we need to decided later)
       #NEED to add seccessful logged in message

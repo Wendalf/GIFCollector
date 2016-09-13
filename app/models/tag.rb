@@ -4,7 +4,7 @@ class Tag < ActiveRecord::Base
 	has_many :users, through: :gifs
 
 	def slug
-		self.name.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+		self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
 	end
 
 	def self.find_by_slug(slug)
