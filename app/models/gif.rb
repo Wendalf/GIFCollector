@@ -4,7 +4,7 @@ class Gif < ActiveRecord::Base
 	has_many :tags, through: :gif_tags
 
 	def slug
-		self.filename.strip.gsub(' ', '-').gsub('.gif', '').gsub(/[^\w-]/, '')
+		self.filename.downcase.strip.gsub(' ', '-').gsub('.gif', '').gsub(/[^\w-]/, '')
 	end
 
 	def self.find_by_slug(slug)

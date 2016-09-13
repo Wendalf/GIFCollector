@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	after_save :makedir
 
 	def slug
-		self.username.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+		self.username.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
 	end
 
 	def self.find_by_slug(slug)

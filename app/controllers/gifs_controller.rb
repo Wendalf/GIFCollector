@@ -19,7 +19,7 @@ class GifsController < ApplicationController
       end
 
       # add tags to each gif that's been created
-      tags = params[:tags].gsub(" ", "").split(",")
+      tags = params[:tags].downcase.gsub(" ", "").split(",")
       tags.each do |tag|
         new_tag = Tag.find_or_create_by(name: tag)
         gif.tags << new_tag

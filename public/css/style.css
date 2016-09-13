@@ -23,20 +23,22 @@ img, video, audio, iframe, table, form {
 .cardrow {
  -moz-column-width: 18em;
  -webkit-column-width: 18em;
- -moz-column-gap: 1em;
- -webkit-column-gap:1em;
+ -moz-column-gap: 0.5em;
+ -webkit-column-gap: 0.5em;
 
 }
 
 .item {
  display: inline-block;
- padding:  .25rem;
+ padding:  .2rem;
  width:  100%;
 }
 
 .well {
  position:relative;
  display: block;
+ padding:  1rem;
+ border-radius: 0px;
 }
 
 
