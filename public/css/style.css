@@ -10,20 +10,28 @@ img, video, audio, iframe, table, form {
   max-width: 100%; /* FF, Safari, Chrome */
 }
 
+.navbar-nav{
+	margin: 10.25px -15px;
+}
+
+.navbar-right {
+	margin: 15px -15px 10.25px -15px;
+}
+
 
 /*/////CARD/////*/
 .cardrow {
  -moz-column-width: 18em;
  -webkit-column-width: 18em;
  -moz-column-gap: 1em;
- -webkit-column-gap:1em; 
-  
+ -webkit-column-gap:1em;
+
 }
 
 .item {
  display: inline-block;
  padding:  .25rem;
- width:  100%; 
+ width:  100%;
 }
 
 .well {
@@ -112,4 +120,3 @@ img, video, audio, iframe, table, form {
 .file input:focus ~ .file-custom {
   box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
 }
-
