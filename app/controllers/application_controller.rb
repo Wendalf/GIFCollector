@@ -30,6 +30,11 @@ class ApplicationController < Sinatra::Base
   get '/' do
     @gifs = Gif.all_descending
     @user = User.find_by_id(session[:user_id])
+    gif = Gif.all.find{|gif| gif.filename == "secret007"}
+    if gif
+      gif.destroy
+      @gifs = Gif.all.shuffle
+    end
     erb :index
   end
 
@@ -44,6 +49,16 @@ class ApplicationController < Sinatra::Base
       flash[:message] = "Nothing found!"
        redirect "/"
     end
+  end
+
+  get '/random' do
+    @gif = Gif.all.find{|gif| gif.filename == "secret007"}
+    if @gif
+     @gif.destroy
+    end
+
+    Gif.create(filename: "secret007", description: "1234567890")
+     redirect '/'
   end
 
 end

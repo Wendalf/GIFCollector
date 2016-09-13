@@ -7,6 +7,7 @@ class GifsController < ApplicationController
   post '/gifs/new' do
     user = User.find(session[:user_id])
     if params[:gif]
+
       gif = Gif.create(filename: params[:gif][:filename], description: params[:description])
       user.gifs << gif
 
@@ -78,5 +79,8 @@ class GifsController < ApplicationController
       redirect "/users/#{current_user.id}"
     end
   end
+
+  
+
 
 end

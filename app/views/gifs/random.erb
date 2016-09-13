@@ -1,0 +1,32 @@
+<% if flash.has?(:message) %>
+  <% if flash[:message] == "Nothing found!"  %>
+    <div class="alert alert-dismissible alert-danger animated fadeInDown">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p><%= flash[:message] %></p>
+    </div>
+  <% else %>
+    <div class="alert alert-dismissible alert-success animated fadeInDown">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p><%= flash[:message] %></p>
+    </div>
+  <%end  %>
+<% end %>
+
+
+
+<div class="cardrow">
+  
+  <% @gifs.each do |gif|%>
+      <div class="item">
+        <div class="well">
+
+          <a href="/gifs/<%= gif.slug %>"><img src="users/<%= gif.user_id %>/<%= gif.filename %>" alt="<%= gif.slug %>"></a>
+
+          <% gif.tags.each do |tag| %>
+          <a href="/tags/<%= tag.slug %>">#<%= tag.name %></a>
+          <% end %>
+
+        </div>
+      </div>
+  <% end %>
+</div>
