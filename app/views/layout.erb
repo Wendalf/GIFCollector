@@ -8,11 +8,15 @@
     <title>GIF Collector</title>
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!-- Font Awesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    
     <!-- Bootstrap -->
     <!-- <link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.min.css"> -->
     <link href="/css/bootstrap.css" rel="stylesheet">
     <!--Custome style-->
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -66,6 +70,9 @@
     <div class="page-header">
     </div>
 
+    <!--Scroll to Top button-->
+    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+    
     <%= yield %>
 
     </div> <!--Container-->
@@ -78,6 +85,23 @@
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <script>
+    // ===== Scroll to Top ==== 
+    $(window).scroll(function() {
+        if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+            $('#return-to-top').fadeIn(200);    // Fade in the arrow
+        } else {
+            $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+        }
+    });
+    $('#return-to-top').click(function() {      // When arrow is clicked
+        $('body,html').animate({
+            scrollTop : 0                       // Scroll to top of body
+        }, 500);
+    });
+  </script>
+
   </body>
 </html>
