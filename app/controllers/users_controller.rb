@@ -39,10 +39,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:message] = "Welcome back #{current_user.username.capitalize}!"
       redirect "/users/#{user.id}"
-      #OR redirect to home page.(we need to decided later)
-      #NEED to add seccessful logged in message
     else
-      #NEED to add login error message
+      flash[:message] = "Please enter info correctly!"
       redirect '/login'
     end
   end
