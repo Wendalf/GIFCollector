@@ -5,27 +5,48 @@ a:link, a:visited, a:hover, a:active {
 /*	color: #f1cf63;*/
 }
 
+img, video, audio, iframe, table, form {
+  width: 100%; /* IE */
+  max-width: 100%; /* FF, Safari, Chrome */
+}
+
+
+/*/////CARD/////*/
+.cardrow {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em; 
+  
+}
+
+.item {
+ display: inline-block;
+ padding:  .25rem;
+ width:  100%; 
+}
+
+.well {
+ position:relative;
+ display: block;
+}
+
 
 /*/////Footer/////*/
 
-#footer {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-
+.footer {
+  width: 100%;
+  height: 30px;
 	text-align: center;
 	font-size: 10px;
 	color: #fff;
-	margin: 0;
-	opacity: 1;
-	z-index: 1000;
 }
 
 /*/////From Div Style/////*/
+
 .centeredform {
-	margin:20% auto;
-	width: 60%;
+	margin:15% auto;
+	width: 50%;
 	padding: 10px;
 }
 
@@ -92,54 +113,3 @@ a:link, a:visited, a:hover, a:active {
   box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
 }
 
-
-
-
-
-div.col-xs-4.well{
-	padding: 15px;
-}
-
-input, textarea {
-	display: block;
-	width: 100%;
-	padding: 5px;
-	margin-bottom: 5px;
-	box-shadow: 0 3px 5px #ccc;
-	border: 1px solid #ccc;
-}
-
-input[type="submit"] {
-	margin-top: 5px;
-	width: 100px;
-	background: black;
-	color: white;
-	border-radius: 25px;
-	border: 0;
-}
-
-input[type="submit"]:hover {
-	background: #555;
-}
-
-.nav_bar nav {
-  border-left: 1px solid #ccc;
-}
-
-.nav_bar nav a {
-	display: inline-block;
-	width: 20%;
-	margin: 0;
-	padding: 22px 0;
-	text-transform: uppercase;
-	color: black;
-	text-align: center;
-	border-right: 1px solid #ccc;
-	text-decoration: none;
-	font: 20px "Trebuchet MS", Arial, sans-serif;
-}
-
-.nav_bar nav a.selected {
-	background: black;
-	color: white;
-}

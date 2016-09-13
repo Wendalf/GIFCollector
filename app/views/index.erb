@@ -13,14 +13,20 @@
 <% end %>
 
 
-<br>
 
-<% @gifs.each do |gif|%>
-    <div>
-      <br>
-      <% gif.tags.each do |tag| %>
-      <a href="/tags/<%= tag.slug %>">#<%= tag.name %></a>
-      <% end %>
-      <a href="/gifs/<%= gif.slug %>"><img src="users/<%= gif.user_id %>/<%= gif.filename %>" alt="<%= gif.slug %>"></a>
-    </div>
-<% end %>
+<div class="cardrow">
+  <% @gifs.each do |gif|%>
+      <div class="item">
+        <div class="well">
+
+          <a href="/gifs/<%= gif.slug %>"><img src="users/<%= gif.user_id %>/<%= gif.filename %>" alt="<%= gif.slug %>"></a>
+
+          <% gif.tags.each do |tag| %>
+          <a href="/tags/<%= tag.slug %>">#<%= tag.name %></a>
+          <% end %>
+
+        </div>
+      </div>
+  <% end %>
+</div>
+
