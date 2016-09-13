@@ -69,6 +69,7 @@ img, video, audio, iframe, table, form {
   position: relative;
   display: inline-block;
   cursor: pointer;
+  margin-bottom: 15px;
   height: 100%;
 	width: 100%;
 }
