@@ -16,11 +16,9 @@ class UsersController < ApplicationController
     if user.save && (user.username != '') && (user.email != '')
       session[:user_id] = user.id
       flash[:message] = "Thanks for signing up!"
-      # user.makedir
       redirect '/'
-      #NEED to add seccessful created user message
     else
-      #NEED to add error message
+      flash[:message] = "Please fill up all fields!"
       redirect '/signup'
     end
   end
@@ -40,7 +38,7 @@ class UsersController < ApplicationController
       flash[:message] = "Welcome back #{current_user.username.capitalize}!"
       redirect "/users/#{user.id}"
     else
-      flash[:message] = "Please enter info correctly!"
+      flash[:message] = "Please enter a valid username and password."
       redirect '/login'
     end
   end

@@ -35,9 +35,9 @@ class ApplicationController < Sinatra::Base
 
   post '/search' do
     @tag_names = Tag.all.map {|t| t.name}
-
-    if @tag_names.include?(params[:input])
-      @tag = Tag.all.find{|tag| tag.name == params[:input]}
+    input = params[:input].downcase.gsub(" ", "")
+    if @tag_names.include?(input)
+      @tag = Tag.all.find{|tag| tag.name == input}
       @gifs = @tag.gifs
       erb :'/tags/show'
     else
