@@ -15,7 +15,7 @@ class GifsController < ApplicationController
     if params[:gif]
 
       gif = Gif.new(filename: params[:gif][:filename], description: params[:description])
-      usergif = user.gifs.all.find{|allgif| allgif.filename == gif.filename}
+      usergif = user.gifs.find_by(filename: params[:gif][:filename])
 
       if usergif
         flash[:message] = "You've uploaded this gif! Edit it here."
