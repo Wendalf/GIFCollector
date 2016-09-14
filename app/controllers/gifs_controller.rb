@@ -12,26 +12,32 @@ class GifsController < ApplicationController
   post '/gifs/new' do
     user = User.find(session[:user_id])
     if params[:gif]
-      gif = Gif.create(filename: params[:gif][:filename], description: params[:description])
-      user.gifs << gif
+      gif = Gif.find_or_create_by(filename: params[:gif][:filename])
+      if !user.gifs.include?(gif)
+        gif.update(description: params[:description])
+        user.gifs << gif
 
-      # create a new folder under public for each user
-      user_id = gif.user_id
-      gif_file_name = params[:gif][:filename]
-      gif_file = params[:gif][:tempfile]
-      File.open("./public/users/#{user_id}/#{gif_file_name}", 'w') do |f|
-        f.write(gif_file.read)
+        # create a new folder under public for each user
+        user_id = gif.user_id
+        gif_file_name = params[:gif][:filename]
+        gif_file = params[:gif][:tempfile]
+        File.open("./public/users/#{user_id}/#{gif_file_name}", 'w') do |f|
+          f.write(gif_file.read)
+        end
+
+        # add tags to each gif that's been created
+        tags = params[:tags].downcase.gsub(" ", "").split(",")
+        tags.each do |tag|
+          new_tag = Tag.find_or_create_by(name: tag)
+          gif.tags << new_tag
+        end
+        flash[:message] = "Successfully Uploaded GIF!"
+
+        redirect "gifs/#{gif.slug}"
+      else
+        flash[:message] = "You've uploaded this gif! Edit it here."
+        redirect "gifs/#{gif.slug}/edit"
       end
-
-      # add tags to each gif that's been created
-      tags = params[:tags].downcase.gsub(" ", "").split(",")
-      tags.each do |tag|
-        new_tag = Tag.find_or_create_by(name: tag)
-        gif.tags << new_tag
-      end
-      flash[:message] = "Successfully Uploaded GIF!"
-
-      redirect "gifs/#{gif.slug}"
     else
       flash[:message] = "Please include a gif file!"
       redirect "/gifs/new"
