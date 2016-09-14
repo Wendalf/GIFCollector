@@ -1,15 +1,13 @@
 <div class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6">
-		<p>Uploaded by <a href="/users/<%= @gif.user.id %>"><%= @gif.user.username %></a></p>
-
-		<img src="../users/<%=  @gif.user_id %>/<%= @gif.filename %>">
-		<%= @gif.description %>
-		<br>
-		<% @gif.tags.each do |tag| %>
-		<a href="/tags/<%= tag.slug %>">#<%= tag.name %></a>
-		<% end %>
-
-	</div>
-	<div class="col-sm-3"></div>
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <p>Uploaded by <a href="/users/<%= @gif.user.id %>"><%= @gif.user.username %></a></p>
+    <img src="../users/<%=  @gif.user_id %>/<%= @gif.filename %>">
+    <%= @gif.description %>
+    <br>
+    <% @gif.tags.each do |tag| %>
+      <a href="/tags/<%= tag.slug %>">#<%= tag.name %></a>
+    <% end %>
+  </div>
+  <div class="col-sm-3"></div>
 </div>

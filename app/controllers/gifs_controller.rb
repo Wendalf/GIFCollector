@@ -15,6 +15,7 @@ class GifsController < ApplicationController
 
       gif = Gif.create(filename: params[:gif][:filename])
       usergif = user.gifs.all.find{|allgif| allgif.filename == gif.filename}
+
       if usergif
         flash[:message] = "You've uploaded this gif! Edit it here."
         gif.destroy
@@ -41,10 +42,12 @@ class GifsController < ApplicationController
         flash[:message] = "Successfully Uploaded GIF!"
         redirect "gifs/#{gif.id}"
       end
+
     else
       flash[:message] = "Please include a gif file!"
       redirect "/gifs/new"
     end
+    
    end
 
   get '/gifs/:id' do
