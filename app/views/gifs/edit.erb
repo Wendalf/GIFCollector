@@ -1,10 +1,18 @@
+<% if flash.has?(:message) %>
+
+    <div class="alert alert-dismissible alert-danger animated fadeInDown">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p><%= flash[:message] %></p>
+    </div>
+<% end %>
+
 <div class="row">
 	<div class="col-sm-3"></div>
 	<div class="col-sm-6">
 		<img src="../../users/<%=  @gif.user_id %>/<%= @gif.filename %>">
 		<br>
 		<br>
-			<form class="form-horizontal" action="/gifs/<%= @gif.slug %>/edit" method="post">
+			<form class="form-horizontal" action="/gifs/<%= @gif.id %>/edit" method="post">
 				<fieldset>
 				<div class="form-group">
 					<input type="text" class="form-control" id="description" name="description" value="<%= @gif.description %>" placehoder="Add description">

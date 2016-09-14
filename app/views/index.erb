@@ -20,7 +20,7 @@
       <div class="item">
         <div class="well">
 
-          <a href="/gifs/<%= gif.slug %>"><img src="users/<%= gif.user_id %>/<%= gif.filename %>" alt="<%= gif.slug %>"></a>
+          <a href="/gifs/<%= gif.id %>"><img src="users/<%= gif.user_id %>/<%= gif.filename %>"></a>
 
           <% gif.tags.each do |tag| %>
           <a href="/tags/<%= tag.slug %>">#<%= tag.name %></a>

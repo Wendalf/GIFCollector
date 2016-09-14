@@ -1,8 +1,6 @@
 
 class UsersController < ApplicationController
 
-
-
   get '/signup' do
     if logged_in?
       redirect '/'
@@ -16,11 +14,9 @@ class UsersController < ApplicationController
     if user.save && (user.username != '') && (user.email != '')
       session[:user_id] = user.id
       flash[:message] = "Thanks for signing up!"
-      # user.makedir
       redirect '/'
-      #NEED to add seccessful created user message
     else
-      #NEED to add error message
+      flash[:message] = "Please fill up all fields!"
       redirect '/signup'
     end
   end
@@ -39,10 +35,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:message] = "Welcome back #{current_user.username.capitalize}!"
       redirect "/users/#{user.id}"
-      #OR redirect to home page.(we need to decided later)
-      #NEED to add seccessful logged in message
     else
-      #NEED to add login error message
+      flash[:message] = "Please enter a valid username and password."
       redirect '/login'
     end
   end
@@ -50,13 +44,15 @@ class UsersController < ApplicationController
   get '/users/:id' do
 
     @user = User.find(params[:id])
+    @gifs = @user.gifs.reverse
 
-    if logged_in? && @user == current_user
-      @gifs = @user.gifs.reverse
-      erb :'/users/show'
+    if @user == current_user
+      @username = "My"
     else
-      redirect '/login'
+      @username = @user.username.capitalize + "'s"
     end
+
+    erb :'/users/show'
 
   end
 
@@ -68,7 +64,5 @@ class UsersController < ApplicationController
       redirect '/'
     end
   end
-
-
 
 end

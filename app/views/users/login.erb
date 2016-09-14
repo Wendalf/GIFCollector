@@ -1,6 +1,6 @@
 
 <% if flash.has?(:message) %>
-<div class="alert alert-dismissible alert-danger animated fadeInDown">
+<div class="alert alert-dismissible alert-danger animated fadeInDown alert-message">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <p><strong><%= flash[:message] %></strong></p>
 </div>
@@ -10,9 +10,6 @@
     <fieldset>
       <div class="form-group">
           <input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username">
-      </div>
-      <div class="form-group">
-          <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="email">
       </div>
       <div class="form-group">
           <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
