@@ -13,8 +13,13 @@ class GifsController < ApplicationController
     user = User.find(session[:user_id])
     if params[:gif]
 
-      gif = Gif.find_or_create_by(filename: params[:gif][:filename])
-      if !user.gifs.include?(gif)
+      gif = Gif.create(filename: params[:gif][:filename])
+      usergif = user.gifs.all.find{|allgif| allgif.filename == gif.filename}
+      if usergif
+        flash[:message] = "You've uploaded this gif! Edit it here."
+        gif.destroy
+        redirect "gifs/#{usergif.id}/edit"
+      else
         gif.update(description: params[:description])
         user.gifs << gif
 
@@ -32,12 +37,9 @@ class GifsController < ApplicationController
           new_tag = Tag.find_or_create_by(name: tag)
           gif.tags << new_tag
         end
-        flash[:message] = "Successfully Uploaded GIF!"
 
+        flash[:message] = "Successfully Uploaded GIF!"
         redirect "gifs/#{gif.id}"
-      else
-        flash[:message] = "You've uploaded this gif! Edit it here."
-        redirect "gifs/#{gif.id}/edit"
       end
     else
       flash[:message] = "Please include a gif file!"

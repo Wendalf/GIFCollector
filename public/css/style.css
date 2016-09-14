@@ -18,6 +18,11 @@ img, video, audio, iframe, table, form {
 	margin: 15px -15px 10.25px -15px;
 }
 
+#randomize {
+	float: right;
+	margin: 6px 0;
+}
+
 
 /*/////CARD/////*/
 .cardrow {
