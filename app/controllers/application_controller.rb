@@ -24,7 +24,6 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     @gifs = Gif.all_descending
-    @user = User.find_by_id(session[:user_id])
     gif = Gif.all.find{|gif| gif.filename == "secret007"}
     if gif
       gif.destroy
@@ -53,7 +52,7 @@ class ApplicationController < Sinatra::Base
     end
 
     Gif.create(filename: "secret007", description: "1234567890")
-     redirect '/'
+    redirect '/'
   end
 
 end

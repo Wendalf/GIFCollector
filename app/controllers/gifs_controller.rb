@@ -10,18 +10,18 @@ class GifsController < ApplicationController
   end
 
   post '/gifs/new' do
-    user = User.find(session[:user_id])
+    user = current_user
+
     if params[:gif]
 
-      gif = Gif.create(filename: params[:gif][:filename])
+      gif = Gif.new(filename: params[:gif][:filename], description: params[:description])
       usergif = user.gifs.all.find{|allgif| allgif.filename == gif.filename}
 
       if usergif
         flash[:message] = "You've uploaded this gif! Edit it here."
-        gif.destroy
         redirect "gifs/#{usergif.id}/edit"
       else
-        gif.update(description: params[:description])
+        gif.save
         user.gifs << gif
 
         # create a new folder under public for each user
@@ -63,7 +63,7 @@ class GifsController < ApplicationController
     @gif = Gif.find_by_id(params[:id])
     @tags = @gif.tags.collect{|tag| tag.name}.join(", ")
     if @gif.user_id == session[:user_id]
-      @user = User.find(session[:user_id])
+      @user = current_user
       erb :'gifs/edit'
     else
       erb :'gifs/show_public'
@@ -71,7 +71,7 @@ class GifsController < ApplicationController
   end
 
   post '/gifs/:id/edit' do
-    user = User.find(session[:user_id])
+    user = current_user
     gif = Gif.find_by_id(params[:id])
     if gif.user_id == user.id
       gif.update(description: params[:description])

@@ -44,9 +44,12 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @gifs = @user.gifs.reverse
-
-    if @user == current_user
-      @username = "My"
+    if logged_in?
+      if @user.id == session[:user_id]
+        @username = "My"
+      else
+        @username = @user.username.capitalize + "'s"
+      end
     else
       @username = @user.username.capitalize + "'s"
     end
